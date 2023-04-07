@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    container_name: todo-database-container
+    environment:
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "root"
+      POSTGRES_DB: todo-database
+      PGDATA: /tmp
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./src/database/database-docker:/var/lib/postgresql/data 
