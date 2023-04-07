@@ -23,9 +23,9 @@ export class TodoService {
     }
 
     async delete(id: number) {
-        const user = await this.prisma.todo.findUnique({ where: { id } });
+        const todo = await this.prisma.todo.findUnique({ where: { id } });
 
-        if (!user) {
+        if (!todo) {
             throw new NotFoundException("Todo not founded by this id")
         }
 
@@ -33,9 +33,9 @@ export class TodoService {
     }
 
     async update(id: number, data: UpdateTodoDTO) {
-        const user = await this.prisma.todo.findUnique({ where: { id } });
+        const todo = await this.prisma.todo.findUnique({ where: { id } });
 
-        if (!user) {
+        if (!todo) {
             throw new NotFoundException("Todo not founded by this id")
         }
 
