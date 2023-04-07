@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { TodoService } from './todo.service';
 import { CreateTodoDTO } from './dto/create-todo.dto';
-import { UpdateUserDTO } from './dto/update-todo.dto';
+import { UpdateTodoDTO } from './dto/update-todo.dto';
 
 @Controller("todo")
 export class TodoController {
@@ -24,7 +24,8 @@ export class TodoController {
     }
 
     @Put(":id")
-    async update(@Param("id", ParseIntPipe) id: number, @Body() data: UpdateUserDTO) {
+    async update(@Param("id", ParseIntPipe) id: number, @Body() data: UpdateTodoDTO) {
         return this.todoService.update(id, data)
     }
+    
 }

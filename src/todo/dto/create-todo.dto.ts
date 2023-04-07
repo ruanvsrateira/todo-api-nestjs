@@ -1,4 +1,4 @@
-import { IsString, Min, IsEnum, IsOptional } from "class-validator"
+import { IsString, IsEnum, IsOptional } from "class-validator"
 import { TodoStatusEnum } from "src/enums/todo.enum"
 
 export class CreateTodoDTO {

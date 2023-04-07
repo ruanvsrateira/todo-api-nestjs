@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateTodoDTO } from './dto/create-todo.dto';
-import { UpdateUserDTO } from './dto/update-todo.dto';
+import { UpdateTodoDTO } from './dto/update-todo.dto';
 
 @Injectable()
 export class TodoService {
@@ -32,7 +32,7 @@ export class TodoService {
         return await this.prisma.todo.delete({ where: {id} })
     }
 
-    async update(id: number, data: UpdateUserDTO) {
+    async update(id: number, data: UpdateTodoDTO) {
         const user = await this.prisma.todo.findUnique({ where: { id } });
 
         if (!user) {
