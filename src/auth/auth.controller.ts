@@ -2,6 +2,7 @@ import { Controller, Post, Get, Body, Headers, UseGuards, Req } from '@nestjs/co
 import { AuthLoginDTO } from './dto/auth-login.dto';
 import { AuthService } from './auth.service';
 import { AuthGuard } from 'src/guards/auth.guard';
+import { User } from 'src/decorators/user.decorator';
 
 @Controller("auth")
 export class AuthController { 
@@ -15,8 +16,7 @@ export class AuthController {
 
     @UseGuards(AuthGuard)
     @Get("me")
-    async me(@Req() request) {
-        const { user } = request 
+    async me(@User("password") user) { 
 
         return {
             msg: "ok", user
